@@ -1,0 +1,6 @@
+suites:
+  default:
+    namespace: nlxProductComparison
+    psr4_prefix: nlxProductComparison
+    spec_path: ./
+    src_path: ./
