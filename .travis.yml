@@ -9,6 +9,10 @@ cache:
 
 matrix:
   include:
+    - php: 7.4
+      env: SHOPWARE_VERSION=\~5.6.4
+    - php: 7.3
+      env: SHOPWARE_VERSION=\~5.6.4
     - php: 7.2
       env: SHOPWARE_VERSION=\~5.6.4
 
