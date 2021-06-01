@@ -19,27 +19,70 @@ class ComparisonListFilter implements ComparisonListFilterInterface
         $this->config = $config;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function filterComparisonList(array $comparisonList): array
     {
-        $hiddenOptions = $this->config->getHiddenOptions();
+        $hiddenOptionKeys = $this->config->getHiddenOptions();
 
-        if (null === $hiddenOptions) {
+        if (null === $hiddenOptionKeys) {
             return $comparisonList;
         }
 
-        if (false === isset($comparisonList['properties'])) {
+        if (false === isset($comparisonList['properties']) || false === isset($comparisonList['articles'])) {
             return $comparisonList;
         }
         $comparisonProperties = $comparisonList['properties'];
-        $filteredComparisonList = [];
+        $comparisonList['properties'] = $this->filterProperties($comparisonProperties, $hiddenOptionKeys);
 
-        foreach ($comparisonProperties as $key => $value) {
-            if (false === isset($hiddenOptions[$key])) {
-                $filteredComparisonList[$key] = $value;
-            }
-        }
-        $comparisonList['properties'] = $filteredComparisonList;
+        $comparisonArticles = $comparisonList['articles'];
+        $comparisonList['articles'] = $this->filterArticles($comparisonArticles, $hiddenOptionKeys);
 
         return $comparisonList;
+    }
+
+    /**
+     * @param string[] $comparisonProperties
+     * @param int[]    $hiddenOptionKeys
+     *
+     * @return string[]
+     */
+    private function filterProperties(array $comparisonProperties, array $hiddenOptionKeys): array
+    {
+        $filteredComparisonProperties = [];
+
+        foreach ($comparisonProperties as $key => $value) {
+            if (false === \in_array($key, $hiddenOptionKeys)) {
+                $filteredComparisonProperties[$key] = $value;
+            }
+        }
+
+        return $filteredComparisonProperties;
+    }
+
+    /**
+     * @param mixed[] $comparisonArticles
+     * @param int[]   $hiddenOptionKeys
+     *
+     * @return mixed[]
+     */
+    private function filterArticles(array $comparisonArticles, array $hiddenOptionKeys): array
+    {
+        foreach ($comparisonArticles as $key => $article) {
+            if (false === isset($article['sProperties'])) {
+                return $comparisonArticles;
+            }
+            $filteredComparisonProperties = [];
+
+            foreach ($article['sProperties'] as $propertyKey => $property) {
+                if (false === \in_array($propertyKey, $hiddenOptionKeys)) {
+                    $filteredComparisonProperties[$propertyKey] = $property;
+                }
+            }
+            $comparisonArticles[$key]['sProperties'] = $filteredComparisonProperties;
+        }
+
+        return $comparisonArticles;
     }
 }

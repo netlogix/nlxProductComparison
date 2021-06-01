@@ -33,12 +33,53 @@ class ComparisonListFilterSpec extends ObjectBehavior
 
     public function it_should_filter_comparison_list(ConfigInterface $config): void
     {
-        $comparisonList = ['article' => [], 'properties' => [1 => 'test', 2 => 'test2', 3 => 'test3']];
-        $hiddenOptions = [3 => 'test3'];
-        $expectedResult = ['article' => [], 'properties' => [1 => 'test', 2 => 'test2']];
+        $comparisonList = [
+            'articles' => [
+                [
+                    'sProperties' => [
+                        1 => 'property1',
+                        2 => 'property2',
+                        3 => 'property3',
+                    ],
+                ],
+                [
+                    'sProperties' => [
+                        1 => 'property1',
+                        2 => 'property2',
+                        3 => 'property3',
+                    ],
+                ]
+            ],
+            'properties' => [
+                1 => 'test',
+                2 => 'test2',
+                3 => 'test3',
+            ],
+        ];
+        $hiddenOptionKeys = [0 => 3];
+        $expectedResult = [
+            'articles' => [
+                [
+                    'sProperties' => [
+                        1 => 'property1',
+                        2 => 'property2',
+                    ],
+                ],
+                [
+                    'sProperties' => [
+                        1 => 'property1',
+                        2 => 'property2',
+                    ],
+                ]
+            ],
+            'properties' => [
+                1 => 'test',
+                2 => 'test2',
+            ],
+        ];
 
         $config->getHiddenOptions()
-            ->willReturn($hiddenOptions);
+            ->willReturn($hiddenOptionKeys);
 
         $this->filterComparisonList($comparisonList)
             ->shouldBe($expectedResult);
@@ -46,7 +87,7 @@ class ComparisonListFilterSpec extends ObjectBehavior
 
     public function it_should_do_nothing_if_hidden_properties_are_null(ConfigInterface $config): void
     {
-        $comparisonList = ['article' => [], 'properties' => [1 => 'test', 2 => 'test2', 3 => 'test3']];
+        $comparisonList = ['articles' => [], 'properties' => [1 => 'test', 2 => 'test2', 3 => 'test3']];
 
         $config->getHiddenOptions()
             ->willReturn(null);
@@ -57,11 +98,23 @@ class ComparisonListFilterSpec extends ObjectBehavior
 
     public function it_should_do_nothing_if_properties_are_not_exists(ConfigInterface $config): void
     {
-        $comparisonList = ['article' => []];
-        $hiddenOptions = [3 => 'test3'];
+        $comparisonList = ['articles' => []];
+        $hiddenOptionKeys = [0 => 3];
 
         $config->getHiddenOptions()
-            ->willReturn($hiddenOptions);
+            ->willReturn($hiddenOptionKeys);
+
+        $this->filterComparisonList($comparisonList)
+            ->shouldBe($comparisonList);
+    }
+
+    public function it_should_do_nothing_if_articles_are_not_exists(ConfigInterface $config): void
+    {
+        $comparisonList = ['properties' => []];
+        $hiddenOptionKeys = [0 => 3];
+
+        $config->getHiddenOptions()
+            ->willReturn($hiddenOptionKeys);
 
         $this->filterComparisonList($comparisonList)
             ->shouldBe($comparisonList);
