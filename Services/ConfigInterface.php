@@ -30,5 +30,8 @@ interface ConfigInterface
      */
     public function set(string $key, string $value): void;
 
+    /**
+     * @return int[]
+     */
     public function getHiddenOptions(): ?array;
 }

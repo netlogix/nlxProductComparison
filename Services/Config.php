@@ -50,6 +50,9 @@ class Config implements ConfigInterface
         $this->config[$key] = $value;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getHiddenOptions(): ?array
     {
         return $this->get('hiddenOptions');

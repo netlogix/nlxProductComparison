@@ -13,6 +13,7 @@ interface ComparisonListFilterInterface
 {
     /**
      * @param mixed[] $comparisonList
+     *
      * @return mixed[]
      */
     public function filterComparisonList(array $comparisonList): array;

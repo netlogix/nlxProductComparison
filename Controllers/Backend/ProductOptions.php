@@ -7,11 +7,8 @@ declare(strict_types=1);
  * @copyright netlogix GmbH & Co. KG
  */
 
-namespace nlxProductComparison\Controllers\Backend;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Shopware\Models\Property\Option;
-use Shopware_Controllers_Backend_ExtJs;
 
 class Shopware_Controllers_Backend_ProductOptions extends Shopware_Controllers_Backend_ExtJs
 {
@@ -27,12 +24,12 @@ class Shopware_Controllers_Backend_ProductOptions extends Shopware_Controllers_B
 
         /** @var Option $option */
         foreach ($options as $option) {
-            $data[$option->getId()] = $option->getName();
+            $data[] = ['id' => $option->getId(), 'name' => $option->getName()];
         }
 
         $this->view->assign([
             'data' => $data,
-            'total' => count($data),
+            'total' => \count($data),
         ]);
     }
 }
