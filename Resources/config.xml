@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
-    <!-- This is just a example! use it, modify it or delete it :) -->
-    <!--<elements>
-        <element type="text">
-            <name>demoConfig</name>
-            <label lang="de">Demo Konfiguration</label>
-            <label lang="en">Demo configuration</label>
-            <value>Just a demo configuration, without any effects.</value>
-            <description lang="de">Nur ein hoffentlich hilfreicher Text.</description>
-            <description lang="en">Hopefully this text will help you.</description>
+    <elements>
+        <element scope="shop" type="combo">
+            <name>hiddenOptions</name>
+            <label lang="de">Eigenschaften ausblenden</label>
+            <label lang="en">Properties to hide</label>
+            <store><![CDATA[Ext.define('Shopware.apps.nlxProductComparison.store.ProductOptions', {
+    extend: 'Ext.data.Store',
+    fields: [
+        { name:'id', type: 'int' },
+        { name:'name', type: 'string' }
+    ],
+    autoLoad: true,
+    pageSize: 25,
+    proxy: {
+        type: 'ajax',
+        url: window.location.href.substr(0, window.location.href.indexOf('backend')) + 'backend/ProductOptions/getOptions',
+        reader: {
+            type: 'json',
+            root: 'data',
+            total: 'total'
+        }
+    }
+    }).create();//new ]]>
+            </store>
+            <options>
+                <multiSelect>true</multiSelect>
+                <valueField>id</valueField>
+                <displayField>name</displayField>
+                <isCustomStore>true</isCustomStore>
+            </options>
         </element>
-    </elements>-->
+    </elements>
 </config>
