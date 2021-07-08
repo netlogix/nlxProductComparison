@@ -2,11 +2,26 @@
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-    <!-- This is just a example! use it, modify it or delete it :) -->
-    <!--<services>
-        <service id="sd.nlxproductcomparison.plugin_config" class="Shopware\Components\Plugin\CachedConfigReader">
-            <factory service="shopware.plugin.cached_config_reader" method="getByPluginName"/>
-            <argument type="string">nlxProductComparison</argument>
+    <services>
+        <service
+                id="nlx.product_comparison.subscriber.compare"
+                class="nlxProductComparison\Subscriber\Compare"
+        >
+            <argument type="service" id="nlx.product_comparison.services.comparison_list_filter"/>
+            <tag name="shopware.event_subscriber"/>
         </service>
-    </services>-->
+
+        <service
+                id="nlx.product_comparison.services.comparison_list_filter"
+                class="nlxProductComparison\Services\ComparisonListFilter"
+        >
+            <argument type="service" id="nlx.product_comparison.services.config"/>
+        </service>
+
+        <service
+                id="nlx.product_comparison.services.config"
+                class="nlxProductComparison\Services\Config">
+            <argument type="service" id="shopware.plugin.cached_config_reader"/>
+        </service>
+    </services>
 </container>
