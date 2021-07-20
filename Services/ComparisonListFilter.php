@@ -26,7 +26,7 @@ class ComparisonListFilter implements ComparisonListFilterInterface
     {
         $hiddenOptionKeys = $this->config->getHiddenOptions();
 
-        if (null === $hiddenOptionKeys) {
+        if (empty($hiddenOptionKeys)) {
             return $comparisonList;
         }
 

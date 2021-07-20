@@ -48,7 +48,7 @@ class ComparisonListFilterSpec extends ObjectBehavior
                         2 => 'property2',
                         3 => 'property3',
                     ],
-                ]
+                ],
             ],
             'properties' => [
                 1 => 'test',
@@ -70,7 +70,7 @@ class ComparisonListFilterSpec extends ObjectBehavior
                         1 => 'property1',
                         2 => 'property2',
                     ],
-                ]
+                ],
             ],
             'properties' => [
                 1 => 'test',
@@ -85,12 +85,12 @@ class ComparisonListFilterSpec extends ObjectBehavior
             ->shouldBe($expectedResult);
     }
 
-    public function it_should_do_nothing_if_hidden_properties_are_null(ConfigInterface $config): void
+    public function it_should_do_nothing_if_hidden_properties_are_empty(ConfigInterface $config): void
     {
         $comparisonList = ['articles' => [], 'properties' => [1 => 'test', 2 => 'test2', 3 => 'test3']];
 
         $config->getHiddenOptions()
-            ->willReturn(null);
+            ->willReturn([]);
 
         $this->filterComparisonList($comparisonList)
             ->shouldBe($comparisonList);

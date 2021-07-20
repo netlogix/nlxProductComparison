@@ -53,8 +53,17 @@ class Config implements ConfigInterface
     /**
      * {@inheritdoc}
      */
-    public function getHiddenOptions(): ?array
+    public function getHiddenOptions(): array
     {
-        return $this->get('hiddenOptions');
+        $hiddenOptions = $this->get('hiddenOptions');
+
+        if (null === $hiddenOptions) {
+            return [];
+        }
+
+        if (\is_array($hiddenOptions)) {
+            return $hiddenOptions;
+        }
+        return [$hiddenOptions];
     }
 }
