@@ -9,6 +9,13 @@
     <link>https://websolutions.netlogix.de/</link>
     <author>netlogix GmbH &amp; Co. KG</author>
 
+    <description lang="de">
+        Plugin, um Eigenschaften, die im Produktvergleich-Overlay angezeigt werden, auszublenden
+    </description>
+    <description lang="en">
+        Plugin to hide properties shown in product comparison overlay
+    </description>
+
     <compatibility minVersion="5.6.0" />
 
     <changelog version="1.0.0">
@@ -26,5 +33,9 @@
     <changelog version="1.0.3">
         <changes lang="de">Behandle "hiddenOptions" nur als ein Array um komplikationen zu vermeiden</changes>
         <changes lang="en">Handle "hiddenOptions" only as an array to prevent complications</changes>
+    </changelog>
+    <changelog version="1.1.0">
+        <changes lang="de">Plugin Beschreibung hinzugefügt</changes>
+        <changes lang="en">Added plugin description</changes>
     </changelog>
 </plugin>
