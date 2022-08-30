@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "php": "^7.2"
+        "php": "^7.2||^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
@@ -33,7 +33,7 @@
             "phpspec-standalone.php7.3.phar": "http://build-tools.cloud.solutiondrive.de/phar/phpspec-standalone.php7.3.phar",
             "phpspec-standalone.php7.2.phar": "http://build-tools.cloud.solutiondrive.de/phar/phpspec-standalone.php7.2.phar",
             "ecs-standalone.phar": "http://build-tools.cloud.solutiondrive.de/phar/coding-standard-standalone.ecs.php7.3.phar",
-            "easy-coding-standard.yml": "http://build-tools.cloud.solutiondrive.de/phar/easy-coding-standard-php7.3.yml"
+            "easy-coding-standard.yml": "http://build-tools.cloud.solutiondrive.de/phar/easy-coding-standard-php7.4.yml"
         }
     }
 }

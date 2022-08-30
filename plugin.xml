@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
     <label lang="de">nlxProductComparison</label>
     <label lang="en">nlxProductComparison</label>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <copyright>(c) by netlogix GmbH &amp; Co. KG</copyright>
     <license>Proprietary</license>
     <link>https://websolutions.netlogix.de/</link>
@@ -37,5 +37,9 @@
     <changelog version="1.1.0">
         <changes lang="de">Plugin Beschreibung hinzugefügt</changes>
         <changes lang="en">Added plugin description</changes>
+    </changelog>
+    <changelog version="1.2.0">
+        <changes lang="de">Shopware 5.7.7 support. Github Actions hinzugefügt</changes>
+        <changes lang="en">Shopware 5.7.7 support. Added github actions</changes>
     </changelog>
 </plugin>
