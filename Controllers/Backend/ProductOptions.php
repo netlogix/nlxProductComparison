@@ -16,7 +16,7 @@ class Shopware_Controllers_Backend_ProductOptions extends Shopware_Controllers_B
     {
         $data = [];
         /** @var EntityManagerInterface $entityManager */
-        $entityManager = $this->container->get('Models');
+        $entityManager = $this->container->get('models');
 
         $optionRepository = $entityManager->getRepository(Option::class);
 
