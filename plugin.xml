@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
     <label lang="de">nlxProductComparison</label>
     <label lang="en">nlxProductComparison</label>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <copyright>(c) by netlogix GmbH &amp; Co. KG</copyright>
     <license>Proprietary</license>
     <link>https://websolutions.netlogix.de/</link>
@@ -42,4 +42,8 @@
         <changes lang="de">Shopware 5.7.7 support. Github Actions hinzugefügt</changes>
         <changes lang="en">Shopware 5.7.7 support. Added github actions</changes>
     </changelog>
+    <changelog version="1.2.1">
+        <changes lang="de">Die richtige Service-ID benutzen</changes>
+        <changes lang="en">Use correct service id</changes>
+    </changelog>    
 </plugin>
